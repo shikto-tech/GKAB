@@ -29,7 +29,7 @@ function Tick(){
 }
 
 function TerminalConnectionCheck(){
-    let lastText = document.getElementById("terminal").children[0].children[2].children[document.getElementById("terminal").children[0].children[2].children.length - 2].innerHTML
+    let lastText = TARGET_WINDOW.document.getElementById("terminal").children[0].children[2].children[TARGET_WINDOW.document.getElementById("terminal").children[0].children[2].children.length - 2].innerHTML
     if(lastText.includes("by remote host")){
 
     }
@@ -38,7 +38,7 @@ function TerminalConnectionCheck(){
 function CheckConnectionState(){
     if(!run_tick) return;
 
-    let nonetconfirmationtextbox = document.getElementById("confirmation_content_container")
+    let nonetconfirmationtextbox = TARGET_WINDOW.document.getElementById("confirmation_content_container")
     if(nonetconfirmationtextbox != null){
         if(nonetconfirmationtextbox.innerHTML.includes("Connection failure has occurred.")){
             CloseWindow()
@@ -48,10 +48,10 @@ function CheckConnectionState(){
 
 function CheckLoginPage(){
     if(!run_tick) return;
-    let box = document.getElementById("guestname")
-    let button = document.getElementById("btn_guest_join")
+    let box = TARGET_WINDOW.document.getElementById("guestname")
+    let button = TARGET_WINDOW.document.getElementById("btn_guest_join")
     if(button != null && box != null){
-        box.value = "JV_BOT"
+        box.value = "XT_TESTER_F1_PC"
         button.click();
         PauseTick(60000)
     }
@@ -92,17 +92,17 @@ function CloseWindow(){
 }
 
 function ClosePorts(){
-    document.getElementsByClassName("btn-remove_user_port").forEach((element) =>{ 
+    TARGET_WINDOW.document.getElementsByClassName("btn-remove_user_port").forEach((element) =>{ 
         element.click()
         document.getElementById("g_cfrm_btn_yes").click()
     });
-    document.getElementById("portforward_port_input").value = 25565
-    document.getElementsByClassName("btn btn-secondary portforward_add_row_btn btn-sm")[0].click();
-    setTimeout(_ => console.log(document.getElementsByClassName("user_port")[0].children[6].innerHTML), 5000)
+    TARGET_WINDOW.document.getElementById("portforward_port_input").value = 25565
+    TARGET_WINDOW.document.getElementsByClassName("btn btn-secondary portforward_add_row_btn btn-sm")[0].click();
+    setTimeout(_ => console.log(TARGET_WINDOW.document.getElementsByClassName("user_port")[0].children[6].innerHTML), 5000)
 }
 
 function GetActiveIP(){
-    return document.getElementsByClassName("user_port")[0].children[6].innerHTML
+    return TARGET_WINDOW.document.getElementsByClassName("user_port")[0].children[6].innerHTML
 }
 
 
