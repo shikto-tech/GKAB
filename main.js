@@ -1,4 +1,5 @@
 setInterval(Tick, 1000)
+LOG("Started ticks")
 
 let window_open = false
 let TARGET_WINDOW;
@@ -13,25 +14,29 @@ function Tick(){
     if(!window_open){
         TARGET_WINDOW = window.open(document.getElementById("target_url").value, "_blank")
         window_open = true
+        LOG("Opened new window")
 
         setTimeout(() => {
             if(!window_open) return
             ClosePorts();
+            LOG("Closed Ports")
             setTimeout(() => {
                 DISCORD_SEND_FORMATTED_MESSAGE(GetActiveIP());
+                LOG("Send discord message")
             }, 5000);
         }, 45000);
     }
 
     CheckLoginPage();
     CheckConnectionState();
+    TerminalConnectionCheck();
     CheckMemory();
 }
 
 function TerminalConnectionCheck(){
     let lastText = TARGET_WINDOW.document.getElementById("terminal").children[0].children[2].children[TARGET_WINDOW.document.getElementById("terminal").children[0].children[2].children.length - 2].innerHTML
     if(lastText.includes("by remote host")){
-
+        CloseWindow()
     }
 }
 
@@ -80,13 +85,16 @@ function CheckMemory(){
 
 function PauseTick(mills){
     run_tick = false
+    LOG("Paused tick for :" + mills)
     setTimeout(() => {
+        LOG("Resumed tick")
         run_tick = true;
     }, mills);
 }
 
 function CloseWindow(){
     TARGET_WINDOW.close()
+    LOG("Closed window")
     window_open = false
     PauseTick(3000)
 }
@@ -102,7 +110,38 @@ function ClosePorts(){
 }
 
 function GetActiveIP(){
+    LOG("Got IP")
     return TARGET_WINDOW.document.getElementsByClassName("user_port")[0].children[6].innerHTML
+}
+
+function LOG(message){
+    message = message || ""
+    document.getElementById("log_out").innerHTML 
+    += "\n"
+    + `[${GetTime()}]> `
+    + message
+}
+
+function GetTime(){
+    let today = new Date();
+
+    let hh = formatZeroPlacement(today.getHours());
+    let _mm = formatZeroPlacement(today.getMinutes());
+    let ss = formatZeroPlacement(today.getSeconds());
+
+    let dd = formatZeroPlacement(today.getDate());
+    let mm = formatZeroPlacement(today.getMonth()+1); 
+    const yyyy = today.getFullYear();    
+
+    return (`${yyyy}-${mm}-${dd}@${hh}:${_mm}:${ss}`)
+}
+
+function formatZeroPlacement(input){
+    if(input<10) 
+    {
+        input=`0${input}`;
+    }
+    return input
 }
 
 
