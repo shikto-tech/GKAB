@@ -103,6 +103,8 @@ function ClosePorts(){
     let all_remove_buttons = TARGET_WINDOW.document.getElementsByClassName("btn-remove_user_port")
     let doneCount = 0;
     let index = 0
+
+    doRemove();
     
     function doRemove(){
         setTimeout(() => {
