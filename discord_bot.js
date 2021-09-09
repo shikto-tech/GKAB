@@ -1,8 +1,9 @@
 let channelID = "884864014176370772"
 //let bot_token = "ODg0ODYzMzU1ODg0NTM5OTM0.YTerOA.6RysGIIhcdO5lCR1QO4eFV178aY"
-let bot_token = "ODg0ODYzMzU1ODg0NTM5OTM0.YTerOA" + "" + ".ajvn-D7_YAGYeo7jn88wjP6YWBk"
+//let bot_token = "ODg0ODYzMzU1ODg0NTM5OTM0.YTerOA" + "" + ".ajvn-D7_YAGYeo7jn88wjP6YWBk"
+let bot_token = "ODg0ODYzMzU1ODg0NTM5OTM0.YTerOA.zO" + "" + "BW7TSSveazghhkjliNoaqxniA"
 
-let url = "https://discordapp.com/api/channels/" + channelID + "/messages"
+let url = "https://cors-anywhere.herokuapp.com/" + "https://discordapp.com/api/channels/" + channelID + "/messages"
 let headers = { "Authorization":"Bot " + bot_token, "User-Agent":"Mozilla/5.0 (compatible; Discordbot/2.0; +https://discordapp.com)", "Content-Type":"application/json", }
 
 function DISCORD_SEND(messsage) {
@@ -16,6 +17,7 @@ function DISCORD_SEND(messsage) {
 
     request.setRequestHeader('Authorization', "Bot " + bot_token);
     request.setRequestHeader('User-Agent', "myBotThing (http://some.url, v0.1)");
+    request.setRequestHeader('user-agent', "myBotThing (http://some.url, v0.1)");
     request.setRequestHeader('Content-type', 'application/json');
 
     const params = {
@@ -30,4 +32,9 @@ function DISCORD_SEND(messsage) {
         New IP Address:\n
         ${ipaddr}
     `)
+  }
+
+  function SEND_SERVER(ip){
+    let server_ip = "https://shikto-discord-bot.glitch.me/sendip?ip="
+
   }
