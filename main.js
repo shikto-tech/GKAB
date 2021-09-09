@@ -100,10 +100,25 @@ function CloseWindow(){
 }
 
 function ClosePorts(){
-    TARGET_WINDOW.document.getElementsByClassName("btn-remove_user_port").forEach((element) =>{ 
-        element.click()
-        TARGET_WINDOW.document.getElementById("g_cfrm_btn_yes").click()
-    });
+    let all_remove_buttons = TARGET_WINDOW.document.getElementsByClassName("btn-remove_user_port")
+    let doneCount = 0;
+    let index = 0
+    
+    function doRemove(){
+        setTimeout(() => {
+            if(doneCount < all_remove_buttons.length){
+                doneCount++
+                all_remove_buttons[index].click()
+                index++
+    
+                setTimeout(() => {
+                    TARGET_WINDOW.document.getElementById("g_cfrm_btn_yes").click()
+                    doRemove()
+                }, 2000);
+            }
+        }, 1000);
+    }
+
     TARGET_WINDOW.document.getElementById("portforward_port_input").value = 25565
     TARGET_WINDOW.document.getElementsByClassName("btn btn-secondary portforward_add_row_btn btn-sm")[0].click();
     setTimeout(_ => console.log(TARGET_WINDOW.document.getElementsByClassName("user_port")[0].children[6].innerHTML), 5000)
