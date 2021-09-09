@@ -117,13 +117,17 @@ function ClosePorts(){
                     TARGET_WINDOW.document.getElementById("g_cfrm_btn_yes").click()
                     doRemove()
                 }, 2000);
+            }else{
+                setNewPort()
             }
         }, 1000);
     }
 
-    TARGET_WINDOW.document.getElementById("portforward_port_input").value = 25565
-    TARGET_WINDOW.document.getElementsByClassName("btn btn-secondary portforward_add_row_btn btn-sm")[0].click();
-    setTimeout(_ => console.log(TARGET_WINDOW.document.getElementsByClassName("user_port")[0].children[6].innerHTML), 5000)
+    function setNewPort(){
+        TARGET_WINDOW.document.getElementById("portforward_port_input").value = 25565
+        TARGET_WINDOW.document.getElementsByClassName("btn btn-secondary portforward_add_row_btn btn-sm")[0].click();
+        setTimeout(_ => console.log(TARGET_WINDOW.document.getElementsByClassName("user_port")[0].children[6].innerHTML), 5000)
+    }
 }
 
 function GetActiveIP(){
