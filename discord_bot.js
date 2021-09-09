@@ -17,7 +17,7 @@ function DISCORD_SEND(messsage) {
 
     request.setRequestHeader('Authorization', "Bot " + bot_token);
     request.setRequestHeader('User-Agent', "myBotThing (http://some.url, v0.1)");
-    request.setRequestHeader('user-agent', "myBotThing (http://some.url, v0.1)");
+    request.setRequestHeader('origin', "https://developer.mozilla.org/");
     request.setRequestHeader('Content-type', 'application/json');
 
     const params = {
