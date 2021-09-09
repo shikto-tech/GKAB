@@ -102,7 +102,7 @@ function CloseWindow(){
 function ClosePorts(){
     TARGET_WINDOW.document.getElementsByClassName("btn-remove_user_port").forEach((element) =>{ 
         element.click()
-        document.getElementById("g_cfrm_btn_yes").click()
+        TARGET_WINDOW.document.getElementById("g_cfrm_btn_yes").click()
     });
     TARGET_WINDOW.document.getElementById("portforward_port_input").value = 25565
     TARGET_WINDOW.document.getElementsByClassName("btn btn-secondary portforward_add_row_btn btn-sm")[0].click();
