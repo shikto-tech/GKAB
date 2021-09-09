@@ -28,10 +28,7 @@ function DISCORD_SEND(messsage) {
   }
 
   function DISCORD_SEND_FORMATTED_MESSAGE(ipaddr){
-    DISCORD_SEND(`
-        New IP Address:\n
-        ${ipaddr}
-    `)
+    DISCORD_SEND(`New IP Address:\n${ipaddr}`)
   }
 
   function SEND_SERVER(ip){
