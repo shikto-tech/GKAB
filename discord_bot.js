@@ -1,4 +1,4 @@
-let channelID = "884864014176370772"
+let channelID = "883033499509092413"
 //let bot_token = "ODg0ODYzMzU1ODg0NTM5OTM0.YTerOA.6RysGIIhcdO5lCR1QO4eFV178aY"
 //let bot_token = "ODg0ODYzMzU1ODg0NTM5OTM0.YTerOA" + "" + ".ajvn-D7_YAGYeo7jn88wjP6YWBk"
 let bot_token = "ODg0ODYzMzU1ODg0NTM5OTM0.YTerOA.zO" + "" + "BW7TSSveazghhkjliNoaqxniA"
@@ -28,7 +28,7 @@ function DISCORD_SEND(messsage) {
   }
 
   function DISCORD_SEND_FORMATTED_MESSAGE(ipaddr){
-    DISCORD_SEND(`New IP Address:\n${ipaddr}`)
+    DISCORD_SEND(`@everyone\nNew IP Address:\n${ipaddr}`)
   }
 
   function SEND_SERVER(ip){
